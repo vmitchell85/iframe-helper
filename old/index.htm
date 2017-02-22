@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+
+<html>
+	<meta name="description" content="A tool that allows you to test a iframed page's background color and size." />
+	<meta name="keywords" content="iframe, frame, iframe tool, check iframe, check frame, iframe test page" />
+	<head>
+		<title>iFrame Test Page</title>
+<!--CSS LINKS-->
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+		<link rel="stylesheet" href="css/custom.css" type="text/css" />
+<!--JS LINKS-->
+		<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			function setFrame() {
+				$('#outerDiv').removeClass('hide');
+				$('#frame').attr('src', $('#url').val());
+				$('#outerDiv').css('background-color', $('#bgColor').val());
+				$('#frame').attr('width', $('#fWidth').val());
+				$('#frame').attr('height', $('#fHeight').val());
+				if ($('#aTrans').attr('checked')) {
+					$('#frame').attr('allowtransparency', 'true');
+				}
+				else {
+					$('#frame').removeAttr('allowtransparency');
+				}
+			}
+			$(document).ready(function() {
+				$('#url').keypress(function(e) {
+				        if(e.which == 13) {
+				            setFrame()
+				        }
+				    });
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container" style="width: 90%; margin-top: 70px;">
+			<div class="row" style="margin-top: 30px;">
+				<div class="well">
+					<div class="row" style="margin-left: 10px;">
+						<h1>iFrame Test Page</h1>
+						<br />
+						This page is here to make your iframe page transparency testing easier. Make sure you got it right!
+						<br /><br />
+						<div class="alert alert-info span5">
+							<h3>Directions:</h3>
+							<ul>
+								<li>Fill in the 'URL' field. Make sure to include the 'http://'</li>
+								<li>Select your other options.</li>
+								<li>Click the 'Show Frame' button.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="row" style="margin-left: 10px;">
+						URL: <input type="text" id="url" name="url" class="span9" value="http://"/>
+					</div>
+					<div class="row" style="margin-left: 10px;">
+						Background Color: <input type="text" name="bgColor" id="bgColor" value="#F2DEDE" />
+						<span style="width: 30px;">&nbsp;</span>
+						Width: <input class="span1" type="text" name="fWidth" id="fWidth" value="1024" />
+						Height: <input class="span1" type="text" name="fHeight" id="fHeight" value="768" />
+						<span style="width: 30px;">&nbsp;</span>
+						Allow Transparency: <input type="checkbox" name="aTrans" id="aTrans" checked="checked" />
+					</div>
+					<div class="row" style="margin-left: 10px;">
+						<button class="btn btn-success span6 offset1" type="button" onclick="setFrame()">Show Frame</button>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="outerDiv" class="well hide" style="text-align: center;">
+					<iframe id="frame" name="frame" frameborder="0"></iframe>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span3 alert	alert-warning">
+					<strong>Last Updated:</strong> July 24, 2012
+				</div>
+				<div class="span3 alert alert-info">
+					<strong>Created By:</strong> <a href="http://www.vincemitchell.me">Vince Mitchell</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+	
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-34483771-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+	</script>
+</html>
