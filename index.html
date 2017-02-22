@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <title>iFrame Helper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css" />
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    <a href="https://github.com/vmitchell85/iframe-helper"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+    <div id="app">
+        <section class="hero is-dark">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">iFrame Helper</h1>
+                    <h2 class="subtitle">A small helper page for testing your iframes.</h2>
+                </div>
+            </div>
+        </section>
+        <section></section>
+        <section id="settings">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-two-thirds">
+                        <div class="box">
+                            <h3 class="title">Settings</h3>
+                            <hr>
+                            <div>
+                                <label class="label">URL</label>
+                                <p class="control">
+                                    <input class="input" type="text" placeholder="http://google.com" v-model="url">
+                                </p>
+                            </div>
+                            <div class="columns">
+                                <div class="column is-6">
+                                    <label class="label">Height</label>
+                                    <p class="control">
+                                        <input class="input" type="text" v-model="height">
+                                    </p>
+                                </div>
+                                <div class="column is-6">
+                                    <label class="label">Width</label>
+                                    <p class="control">
+                                        <input class="input" type="text" v-model="width">
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column is-6">
+                                    <label class="label">Background Color</label>
+                                    <div class="control is-grouped">
+                                        <p class="control is-expanded">
+                                            <input class="input" type="text" v-model="bg">
+                                        </p>
+                                        <p class="control">
+                                            <div class="color-box" :style="{'background-color': bg}"></div>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="column is-6">
+                                    <label class="label">Scrolling</label>
+                                    <p class="control">
+                                        <span class="select">
+                                            <select v-model="scroll">
+                                                <option value="yes">Yes</option>
+                                                <option value="no">No</option>
+                                                <option value="auto">Auto</option>
+                                            </select>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column is-6">
+                                    
+                                </div>
+                                <div class="column is-6">
+                                    <label class="label">Frameborder</label>
+                                    <p class="control">
+                                        <input class="input" type="number" v-model="fborder">
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button" @click="pushChanges()" class="button is-primary">Update iFrame</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-one-third">
+                        <div class="box">
+                            <h3 class="title">Details</h3>
+                            <p>
+                                This project was designed to allow an easy place to test out simple iFrame settings and configuration.
+                            </p>
+                            <br>
+                            <p>
+                                The original project was designed for old IE versions, but this version is using new fancy technology. Send me a message (<a href="https://twitter.com/vmitchell85">@vmitchell85</a>) if you are looking for the older version.
+                            </p>
+                            <br>
+                            <p>
+                                <strong>Built With:</strong>
+                                <ul>
+                                    <li><a href="https://vuejs.org">Vue JS</a></li>
+                                    <li><a href="http://bulma.io">Bulma</a></li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="frame" :style="{'background-color': iframe.bg}" v-if="iframe.url">
+            <iframe :src="iframe.url" :height="iframe.height" :width="iframe.width" :frameborder="iframe.fborder" :scrolling="iframe.scroll"></iframe>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>
